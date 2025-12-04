@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, computed, ref, watchEffect } from "vue";
-import { App, Rect, Text, Group, PointerEvent } from "leafer-ui";
+import { onMounted, computed, ref } from "vue";
+import { App, Rect, Group, PointerEvent } from "leafer-ui";
 import "leafer-editor";
 import "@leafer-in/state";
-import { graphic, line } from "./data";
+import { graphic } from "./data";
 const uniquegGraphic = computed(() => {
   const map: any = [];
   for (const item of graphic.children) {
