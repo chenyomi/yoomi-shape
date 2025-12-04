@@ -4,6 +4,9 @@ import { App, Rect, Group, PointerEvent } from "leafer-ui";
 import "leafer-editor";
 import "@leafer-in/state";
 import { graphic } from "./data";
+import vueImg from '../assets/vue.svg';
+import viteImg from '../assets/vite.svg';
+import leaferImg from '../assets/leafer.svg';
 const uniquegGraphic = computed(() => {
   const map: any = [];
   for (const item of graphic.children) {
@@ -27,7 +30,7 @@ onMounted(() => {
     height: 100,
     fill: {
       type: "image",
-      url: "/vue.svg",
+      url: vueImg,
       mode: "fit",
     },
     editable: true,
@@ -46,7 +49,7 @@ onMounted(() => {
     height: 100,
     fill: {
       type: "image",
-      url: "/vite.svg",
+      url: viteImg,
       mode: "fit",
     },
     hoverStyle: {
@@ -65,7 +68,7 @@ onMounted(() => {
     height: 100,
     fill: {
       type: "image",
-      url: "/leafer.svg",
+      url: leaferImg,
       mode: "fit",
     },
     hoverStyle: {
@@ -100,6 +103,10 @@ const onClick = (item: any) => {
     
   }
 };
+
+const getUrl = (item: any) => {
+  return new URL(`../assets/shape/${item.icon.split('-')[2]}.svg`, import.meta.url).href
+};
 </script>
 
 <template>
@@ -107,7 +114,7 @@ const onClick = (item: any) => {
     <img
       v-for="item in uniquegGraphic"
       :class="currentSelect == item.json.name && 'active'"
-      :src="`/assets/shape/${item.icon.split('-')[2]}.svg`"
+      :src="getUrl(item)"
       alt=""
       @click="onClick(item)"
     />
